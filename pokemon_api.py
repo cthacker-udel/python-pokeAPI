@@ -12,15 +12,6 @@ req = requests.get('https://pokeapi.co/api/v2/pokemon/{}'.format(pokemon_name)) 
 json_data = req.json()
 print(json_data.keys())
 print('\n\n')
-#comment
-# moves = {}
-# machine = {}
-# tutor = {}
-# levelup = {} ##organize into 3 lists, machine moves, tutor moves, levelup, classified by which game too
-# print(json_data['moves'])
-# print(json_data['abilities']) multiple
-# print(json_data['held_items']) multiple
-# print(json_data['game_indices'])
 x = {}
 print('\n\n')
 
@@ -130,45 +121,3 @@ for eachversion in pokemon.get_appearances().keys():
     x = lambda eachversion: [eachversion]
     y = x(eachversion)
     newdict = dict.fromkeys(y, '')
-
-"""
-----------------------------------------------------------JUNK DEPOSIT--------------------------------------------------
-
-for eachitem in json_data['held_items']: #eachitem = eachitem --> eachitem['name'] = name --> eachitem['version_details']
-    print(eachitem)                                                                          #is every version it is in
-    print(eachitem['item']['name'])                                                          # so we must make a dictionary
-    #print(eachitem['version_details'][0]['version']['name'])      #version details           # for eachitem is a key
-    print('\n\n')                                                                            # which results in a value of
-    #for eachversion in eachitem['version_details']:                                          # lists which contain the
-    #    print(eachversion)                                                                   # versions
-    #    newlist.append(eachversion['version']['name'])
-    #item[eachitem['item']['name']] = newlist
-    #newlist = []
-
-    #print('MOVES##### {}'.format(moves))
-    #moves
-    #So i have a dictionary variable and i want to make a dictionary within the dictionary with keys
-    #red = {'moves': {move1: description, move2: description}}
-    #red['moves'] = {}
-
-    ///////////////
-
-    for eachmove in json_data['moves']:
-    #print(eachmove)
-    print('\n')
-    moves[eachmove['version_group_details'][0]['version_group']['name']] = {}
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['machine'] = {}
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['tutor'] = {}
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['levelup'] = {}
-    for eachversion in eachmove['version_group_details']:
-        if eachversion['move_learn_method']['name'] == 'machine':
-            machine[eachmove['move']['name']] = 'Level : {}'.format(eachversion['level_learned_at'])
-        elif eachversion['move_learn_method']['name'] == 'tutor':
-            tutor[eachmove['move']['name']] = 'Level : {}'.format(eachversion['level_learned_at'])
-        elif eachversion['move_learn_method']['name'] == 'level-up':
-            levelup[eachmove['move']['name']] = 'Level : {}'.format(eachversion['level_learned_at'])
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['machine'] = machine
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['tutor'] = tutor
-    moves[eachmove['version_group_details'][0]['version_group']['name']]['levelup'] = levelup
-
-"""
