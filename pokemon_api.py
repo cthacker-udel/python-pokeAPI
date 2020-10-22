@@ -12,6 +12,7 @@ req = requests.get('https://pokeapi.co/api/v2/pokemon/{}'.format(pokemon_name)) 
 json_data = req.json()
 print(json_data.keys())
 print('\n\n')
+#comment
 # moves = {}
 # machine = {}
 # tutor = {}
